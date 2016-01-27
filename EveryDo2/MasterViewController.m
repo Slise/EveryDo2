@@ -58,7 +58,7 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         ToDo *object = self.toDoList[indexPath.row];
-        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
+        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] self];
         [controller setDetailItem:object];
         controller.navigationItem.leftItemsSupplementBackButton = YES;
     }
@@ -86,6 +86,11 @@
     cell.titleLabel.text = [object title];
     cell.priorityLevel.text = ([NSString stringWithFormat:@"%d", [object priorityNumber]]);
     return cell;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"Title:                    Description:                   Priority:";
+    
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

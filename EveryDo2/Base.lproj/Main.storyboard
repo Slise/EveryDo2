@@ -183,7 +183,7 @@
                                     <outlet property="descriptionLabel" destination="S86-kA-7qA" id="0ml-Dh-HiO"/>
                                     <outlet property="priorityLevel" destination="uai-4E-9fH" id="A9I-f8-rVL"/>
                                     <outlet property="titleLabel" destination="bhw-Nu-UhF" id="YYD-bo-iXH"/>
-                                    <segue destination="JEX-9P-axG" kind="show" id="I4C-1o-Bqx"/>
+                                    <segue destination="JEX-9P-axG" kind="show" identifier="showDetail" id="I4C-1o-Bqx"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
