@@ -12,14 +12,14 @@
 #import "ToDoTableViewCell.h"
 #import "AddNewItemViewController.h"
 
-@interface MasterViewController ()
+@interface MasterViewController () <NewItemDelegate>
 
 @property NSMutableArray *toDoList;
 
 @end
 
 
-@implementation MasterViewController
+@implementation MasterViewController 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,10 +47,9 @@
 
 - (void)insertNewObject:(id)sender {
     // make the view controller
-    
     AddNewItemViewController *newVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SetToDo"];
+    [newVC setDelegate:self];
     [self presentViewController:newVC animated:YES completion:NULL];
-    
 }
 
 #pragma mark - Segues
@@ -73,6 +72,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.toDoList count];
+}
+
+- (void)newItemAdded:(ToDo *)newItem {
+    [self.toDoList addObject:newItem];
+    [self.tableView reloadData];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

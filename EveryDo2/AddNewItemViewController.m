@@ -25,8 +25,7 @@
 }
 
 - (IBAction)createButtonPress:(id)sender {
-    
-    ToDo *newItem = [ToDo alloc] initWithTitle:self.modalTitle descriptions:self.modalDescription priorityNumber:<#(int)#> isCompletedIndicator:NO];
+    ToDo *newItem = [[ToDo alloc] initWithTitle:self.modalTitle.text descriptions:self.modalDescription.text priorityNumber:(int)self.priorityNumber.selectedSegmentIndex isCompletedIndicator:NO];
     [self.delegate newItemAdded:newItem];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
